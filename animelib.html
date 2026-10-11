@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>Untitled</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/animejs/dist/bundles/anime.umd.min.js"></script>
+
+  </head>
+
+  <body style="background-color:pink;">
+    <script>
+      /* global anime */
+      function setup () {
+        const el = document.createElement('div')
+        el.textContent = 'im spinning and cant stop! help!'
+        el.style.fontSize = '30px'
+        el.style.margin = '240px auto'
+        el.style.width = 'fit-content'
+        el.style.color = 'red';
+        el.style.fontFamily = 'Papyrus, Copperplate'
+        el.style.textShadow = '100px 100px red';
+        document.body.appendChild(el)
+
+        const {
+          chars
+        } = anime.splitText(el, {
+          words: false,
+          chars: true
+        })
+
+        anime.animate(chars, {
+          y: [{
+              to: '-2.75rem',
+              ease: 'outExpo',
+              duration: 600
+            },
+            {
+              to: 0,
+              ease: 'outBounce',
+              duration: 800,
+              delay: 100
+            }
+          ],
+          rotate: {
+            from: '-360deg',
+            delay: 10
+          },
+          delay: anime.stagger(4),
+          loopDelay: 1,
+          loop: true
+        })
+      }
+
+      window.addEventListener('load', setup)
+    </script>
+  </body>
+</html>
